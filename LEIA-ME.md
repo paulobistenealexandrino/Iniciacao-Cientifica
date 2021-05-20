@@ -37,6 +37,13 @@ Esse procedimento gerará o arquivo Tradutor Estratos.RDS que será usado no alg
 
 "Gerar Meu DataSet.R" é o arquivo principal dessa parte. Ao executá-lo será gerada uma lista de despesas categorizadas e já com os devidos códigos e dos estratos. A partir daí podemos iniciar nosso processo de limpeza e organização dos dados.
 
+# Limpeza dos Dados
+
+Nessa etapa eu realizei um exercício de organização dos dados, corrigindo classe das variáveis, trocando nomes de colunas, criando algumas variáveis categóricas a partir de varíaveis contínuas (classes de rendimento a partir da renda). Nessa etapa utilizei o arquivo auxiliar [Minhas Variáveis.csv](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/38cef9ed29609df7eac6ec9a2c2bf2c88fe4dc4d/Minhas%20Vari%C3%A1veis.csv) e [Indice_Despesa.csv](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/c6ab5db375255ebffff4b80bd5d69da33d69385e/Indice_Despesa.csv) para substituir o o código da despesa pelo seu nome. Assim:
+
+1. Baixe o arquivo [Indice_Despesa.csv](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/c6ab5db375255ebffff4b80bd5d69da33d69385e/Indice_Despesa.csv)
+2. Baixe o arquivo [Minhas Variáveis.csv](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/38cef9ed29609df7eac6ec9a2c2bf2c88fe4dc4d/Minhas%20Vari%C3%A1veis.csv)
+3. 
 
 
 
