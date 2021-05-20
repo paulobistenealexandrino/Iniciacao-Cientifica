@@ -1,8 +1,8 @@
 # Explolando o dataset POF
 
-setwd(". . .") # DiretÛrio onde se encontra o arquivo POF.RDS
+setwd(". . .") # Diret√≥rio onde se encontra o arquivo POF.RDS
 library(tidyverse)
-# library(janitor) # Para utilizar a funÁ„o adorn_total para somas parciais. Descomente caso necess·rio.
+# library(janitor) # Para utilizar a fun√ß√£o adorn_total para somas parciais. Descomente caso necess√°rio.
 
 
 # Carregando o dataset a ser utilizado
@@ -16,19 +16,19 @@ POF <- readRDS(file = "POF.RDS")
 # Exemplos
 
 
-# 1) Despesa mÈdia para o Brasil
-# Aqui queremos saber qual a despesa mÈdia mensal por famÌlia no Brasil (lembrando que os valores j· est„o por mÍs)
+# 1) Despesa m√©dia para o Brasil
+# Aqui queremos saber qual a despesa m√©dia mensal por fam√≠lia no Brasil (lembrando que os valores j√° est√£o por m√™s)
 
-# Devemos primeiro calcular o n˙mero de famÌlias (Unidades de Consumo)
+# Devemos primeiro calcular o n√∫mero de fam√≠lias (Unidades de Consumo)
 familias <- POF %>%
-  select(COD_UPA, NUM_DOM, NUM_UC, PESO_FINAL) %>% # Extraindo os identificadores de cada famÌlia
-  distinct() %>% # O dataset POF contÈm todas as despesas, mas queremos saber o n˙mero de famÌlias (aqui s„o 58.039 famÌlias, presentes em 57.920 domicÌlios)
-  summarise(p_familias = sum(PESO_FINAL)) # Soma do PESO_FINAL das famÌlias para gerar o nosso denominador
+  select(COD_UPA, NUM_DOM, NUM_UC, PESO_FINAL) %>% # Extraindo os identificadores de cada fam√≠lia
+  distinct() %>% # O dataset POF cont√©m todas as despesas, mas queremos saber o n√∫mero de fam√≠lias (aqui s√£o 58.039 fam√≠lias, presentes em 57.920 domic√≠lios)
+  summarise(p_familias = sum(PESO_FINAL)) # Soma do PESO_FINAL das fam√≠lias para gerar o nosso denominador
 
 # Lembrando:
-# COD_UPA: cÛdigo da unidade prim·ria de amostragem
-# NUM_DOM: A numeraÁ„o do domicÌlo dentro da UPA
-# NUM_UC: NumeraÁ„o da unidade de consumo (famÌlia) dentro do domicÌlio
+# COD_UPA: c√≥digo da unidade prim√°ria de amostragem
+# NUM_DOM: A numera√ß√£o do domic√≠lo dentro da UPA
+# NUM_UC: Numera√ß√£o da unidade de consumo (fam√≠lia) dentro do domic√≠lio
 
 # Somando o valor total das despesas:
 despesas <- sum(POF$VALOR_DESPESA)/as.numeric(familias)
@@ -36,20 +36,20 @@ despesas <- sum(POF$VALOR_DESPESA)/as.numeric(familias)
 # Mostrando o resultado no console
 despesas
 
-# Despesa mÈdia nacional: R$ 4649,03 (Primeiros Resultados, p. 39)
+# Despesa m√©dia nacional: R$ 4649,03 (Primeiros Resultados, p. 39)
 
-# Removendo vari·veis utilizadas
-rm(list = ls()[!(ls() %in% c("POF"))]) # Remove todos os objetos da memÛria, menos "POF"
+# Removendo vari√°veis utilizadas
+rm(list = ls()[!(ls() %in% c("POF"))]) # Remove todos os objetos da mem√≥ria, menos "POF"
 
 
 
-# 2) Despesa mÈdia por tipo de domicÌlio
-# Despesa mÈdia nacional para domicÌlios Urbanos e Rurais
+# 2) Despesa m√©dia por tipo de domic√≠lio
+# Despesa m√©dia nacional para domic√≠lios Urbanos e Rurais
 
 # Agrupamento que utilizaremos
 grupo <- c("SITUACAO_DOM") 
 
-# N˙mero de famÌlias por SITUACAO_DOM
+# N√∫mero de fam√≠lias por SITUACAO_DOM
 familias <- POF %>%
   group_by_at(grupo) %>% # Agrupado por SITUACAO_DOM
   select(COD_UPA, NUM_DOM, NUM_UC, PESO_FINAL) %>% 
@@ -72,11 +72,11 @@ despesas
 
 # Urbano: R$ 4985,39; Rural: R$ 2543,15 (Primeiros Resultados, p. 39)
 
-# Removendo vari·veis utilizadas
+# Removendo vari√°veis utilizadas
 rm(list = ls()[!(ls() %in% c("POF"))])
 
 
-# 3) Despesa mÈdia com transporte por Regi„o
+# 3) Despesa m√©dia com transporte por Regi√£o
 
 grupo <- c("REGIAO")
 
@@ -98,16 +98,16 @@ despesas
 
 rm(list = ls()[!(ls() %in% c("POF"))])
 
-# 4) Despesa mÈdia com transporte urbano por classe de rendimento na Cidade do Rio de Janeiro e Resto da Regi„o Metropolitana
+# 4) Despesa m√©dia com transporte urbano por classe de rendimento na Cidade do Rio de Janeiro e Resto da Regi√£o Metropolitana
 
-# Esse exemplo necessita de maior atenÁ„o na construÁ„o dos filtros
+# Esse exemplo necessita de maior aten√ß√£o na constru√ß√£o dos filtros
 
-# Agruparemos por classe de rendimento e local (Capital, Regi„o Metropolitana ou Resto da Estado)
+# Agruparemos por classe de rendimento e local (Capital, Regi√£o Metropolitana ou Resto da Estado)
 grupo <- c("CLASSE_REND","LOCAL")
 
-# Dessa vez n„o queremos todas as famÌlias, apenas as residentes no Estado do Rio de Janeiro
+# Dessa vez n√£o queremos todas as fam√≠lias, apenas as residentes no Estado do Rio de Janeiro
 familias <- POF %>%
-  filter(UF_SIGLA == "RJ" & LOCAL %in% c("CAPITAL","RESTO_RM")) %>% # Filtro para as famÌlias da cidade do Rio e resto da RM
+  filter(UF_SIGLA == "RJ" & LOCAL %in% c("CAPITAL","RESTO_RM")) %>% # Filtro para as fam√≠lias da cidade do Rio e resto da RM
   group_by_at(grupo) %>%
   select(COD_UPA, NUM_DOM, NUM_UC, PESO_FINAL) %>%
   distinct() %>%
@@ -122,7 +122,7 @@ despesas <- POF %>%
   mutate(despesa_media = round(soma_despesas/p_familias, digits = 2)) %>%
   select(-c("soma_despesas","p_familias"))
 
-# Modificando a visualizaÁ„o da tabela e ordenando pela classe de rendimento
+# Modificando a visualiza√ß√£o da tabela e ordenando pela classe de rendimento
 despesas %>% spread(key = "LOCAL", value = "despesa_media") %>% arrange(CAPITAL)
 
 rm(list = ls()[!(ls() %in% c("POF"))])
