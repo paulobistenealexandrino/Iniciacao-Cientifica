@@ -1,14 +1,14 @@
 ## Data cleaning POF_despesas
 
-# Selecionando diretÛrio e carregando os pacotes necess·rios.
+# Selecionando diret√≥rio e carregando os pacotes necess√°rios.
 setwd(". . . ")
 library(tidyverse)
 
 # Carregando o data set
-POF_despesas <- readRDS(". . ./POF_despesas.RDS") # LocalizaÁ„o em que se encontra o arquivo "POF_despesas.RDS"
+POF_despesas <- readRDS(". . ./POF_despesas.RDS") # Localiza√ß√£o em que se encontra o arquivo "POF_despesas.RDS"
 
-# 1) Consertando o tipo de vari·vel de cada coluna.
-minhas_variaveis <- read.csv("Minhas Vari·veis.csv", sep = ";")
+# 1) Consertando o tipo de vari√°vel de cada coluna.
+minhas_variaveis <- read.csv("Minhas Vari√°veis.csv", sep = ";")
 
 # Corrigindo factors
 variaveis <- as.vector(minhas_variaveis[,1][minhas_variaveis$correct_class == "factor"]) #selecionando as colunas que devem ser corrigidas
@@ -29,7 +29,7 @@ POF_despesas[variaveis] <- lapply(POF_despesas[variaveis], as.numeric)
 
 rm(variaveis)
 
-# 2) Renomeando vari·veis
+# 2) Renomeando vari√°veis
 
 POF_despesas <- POF_despesas %>%
   rename(VALOR_DESPESA = valor,
@@ -43,14 +43,14 @@ POF_despesas <- POF_despesas %>%
 POF_despesas <- POF_despesas %>%
   select(-c("UF", "ESTRATO_POF", "PESO"))
 
-# Neste trecho uni dois scripts. Por isso a vari·vel POF_despesas foi substituida por POF
+# Neste trecho uni dois scripts. Por isso a vari√°vel POF_despesas foi substituida por POF
 POF <- POF_despesas
 rm(POF_despesas)
 
 
 
-# 4) Alterando colunas com nomes das despesas para substituir os cÛdigos:
-indice_desp <- read.csv("Indice_Despesa.csv", sep = ";") # Arquivo que contÈm a legenda das despesas
+# 4) Alterando colunas com nomes das despesas para substituir os c√≥digos:
+indice_desp <- read.csv("Indice_Despesa.csv", sep = ";") # Arquivo que cont√©m a legenda das despesas
 indice_desp$NIVEL <- as.factor(indice_desp$NIVEL)
 indice_desp <- indice_desp[,2:3]
 
@@ -62,7 +62,7 @@ POF_desp <- POF %>%
   left_join(indice_desp, by = c("Nivel_4" = "NIVEL")) %>% 
   left_join(indice_desp, by = c("Nivel_5" = "NIVEL"))
 
-# Retirando as colunas de despesas registradas pelo cÛdigo:
+# Retirando as colunas de despesas registradas pelo c√≥digo:
 POF_desp <- POF_desp %>%
   select(!Nivel_0:Nivel_5)
 
@@ -74,10 +74,10 @@ colnames(POF_desp)[16:21] <- c("nivel_0",
                                "nivel_4",
                                "nivel_5")
 
-# salvando o resultado na vari·vel POF (utilizada no restante do algoritmo):
+# salvando o resultado na vari√°vel POF (utilizada no restante do algoritmo):
 POF <- POF_desp
 
-# Removendo as vari·veis que n„o ser„o utilizadas:
+# Removendo as vari√°veis que n√£o ser√£o utilizadas:
 rm(POF_desp, indice_desp)
 
 # Tradutor da coluna TIPO_SITUACAO_REG:
@@ -89,7 +89,7 @@ POF$SITUACAO_DOM <- as.factor(POF$SITUACAO_DOM)
 
 # Criando a coluna Classe de rendimento total: 
 POF <- transform(POF, CLASSE_REND = ifelse(RENDA_TOTAL <= 1908,
-                                           "AtÈ 2 SM",
+                                           "At√© 2 SM",
                                            ifelse(RENDA_TOTAL > 1908 & RENDA_TOTAL <= 2862,
                                                   "Mais de 2 a 3 SM",
                                                   ifelse(RENDA_TOTAL > 2862 & RENDA_TOTAL <= 5724, 
@@ -106,6 +106,6 @@ POF <- transform(POF, CLASSE_REND = ifelse(RENDA_TOTAL <= 1908,
 
 
 
-# Salvando a POF com as alteraÁıes realizadas:
+# Salvando a POF com as altera√ß√µes realizadas:
 saveRDS(POF, file = "POF.RDS")
 
