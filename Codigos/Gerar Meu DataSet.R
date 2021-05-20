@@ -1,20 +1,20 @@
 #                            POF 2017-2018
 
-#  PROGRAMA PARA GERA«√O DAS ESTIMATIVAS PONTUAIS DA TABELA DE DESPESA GERAL
+#  PROGRAMA PARA GERA√á√ÉO DAS ESTIMATIVAS PONTUAIS DA TABELA DE DESPESA GERAL
 
 
 # IMPORTANTE!
-# ESTA N√O … A VERS√O ORIGINAL DO ALGORITMO DISPONIBILIZADO PELO IBGE
-# TRATA-SE DE UMA ADAPTA«√O PARA O PROP”SITO DA MINHA PESQUISA
+# ESTA N√ÉO √â A VERS√ÉO ORIGINAL DO ALGORITMO DISPONIBILIZADO PELO IBGE
+# TRATA-SE DE UMA ADAPTA√á√ÉO PARA O PROP√ìSITO DA MINHA PESQUISA
 
 
 
-# … preciso executar antes o arquivo "Leitura dos Microdados - R.R"
+# √â preciso executar antes o arquivo "Leitura dos Microdados - R.R"
 # que se encontra no arquivo compactado "Programas_de_Leitura.zip"
-# Este passo È necess·rio para gerar os arquivos com a extens„o .rds
-# correspondentes aos arquivos com extens„o .txt dos microdados da POF
+# Este passo √© necess√°rio para gerar os arquivos com a extens√£o .rds
+# correspondentes aos arquivos com extens√£o .txt dos microdados da POF
 
-# "....." indica a pasta/diretÛrio de trabalho no HD local separados por "/"
+# "....." indica a pasta/diret√≥rio de trabalho no HD local separados por "/"
 # onde se encontram os arquivos .txt descompactados do arquivo Dados_20200403.zip
 # Exemplo: setwd("c:/POF2018/Dados_20200403")
 
@@ -24,20 +24,20 @@ library(tidyverse)
 #  Leitura do REGISTRO -  - ALUGUEL ESTIMADO 
 aluguel_estimado_p <- readRDS("ALUGUEL_ESTIMADO.rds")
 
-#  AnualizaÁ„o e expans„o dos valores utilizados para a obtenÁ„o dos resultados 
-#  (vari·vel V8000_defla). 
+#  Anualiza√ß√£o e expans√£o dos valores utilizados para a obten√ß√£o dos resultados 
+#  (vari√°vel V8000_defla). 
 
 # a) Para anualizar, utilizamos o quesito "fator_anualizacao". Neste registro, 
-#    cujas informaÁıes se referem a valores mensais de alugueis, utilizamos tambÈm
-#    o quesito V9011 (n˙mero de meses). 
-#    Os valores s„o anualizados para depois se obter uma mÈdia mensal.
+#    cujas informa√ß√µes se referem a valores mensais de alugueis, utilizamos tamb√©m
+#    o quesito V9011 (n√∫mero de meses). 
+#    Os valores s√£o anualizados para depois se obter uma m√©dia mensal.
 
 # b) Para expandir, utilizamos o quesito "peso_final".
 
-# c) Posteriormente, o resultado È dividido por 12 para obter a estimativa mensal.
+# c) Posteriormente, o resultado √© dividido por 12 para obter a estimativa mensal.
 
-# A principal adaptaÁ„o que eu fiz foi a inserÁ„o de um id que permitir· gerar um dataset
-# cujas observaÁıes s„o as despesas realizadas, devidamente categorizadas.
+# A principal adapta√ß√£o que eu fiz foi a inser√ß√£o de um id que permitir√° gerar um dataset
+# cujas observa√ß√µes s√£o as despesas realizadas, devidamente categorizadas.
 
 alu_estimado_p <- 
   transform( aluguel_estimado_p,
@@ -52,19 +52,19 @@ rm(aluguel_estimado_p)
 
 despesa_coletiva_p <- readRDS("DESPESA_COLETIVA.rds")
 
-#   AnualizaÁ„o e expans„o dos valores utilizados para a obtenÁ„o dos resultados
-#   (vari·veis V8000_defla e V1904_defla). O quesito V1904_defla se refere a despesa 
-#   com "INSS e Outras ContribuiÁıes Trabalhistas", que È utilizado no grupo 
+#   Anualiza√ß√£o e expans√£o dos valores utilizados para a obten√ß√£o dos resultados
+#   (vari√°veis V8000_defla e V1904_defla). O quesito V1904_defla se refere a despesa 
+#   com "INSS e Outras Contribui√ß√µes Trabalhistas", que √© utilizado no grupo 
 #   "Outras despesas correntes".
 
-# a) Para anualizar, utilizamos o quesito "fator_anualizacao". No caso especÌfico 
-#    dos quadros 10 e 19, cujas informaÁıes se referem a valores mensais, utilizamos
-#    tambÈm o quesito V9011 (n˙mero de meses).
-#    Os valores s„o anualizados para depois se obter uma mÈdia mensal.
+# a) Para anualizar, utilizamos o quesito "fator_anualizacao". No caso espec√≠fico 
+#    dos quadros 10 e 19, cujas informa√ß√µes se referem a valores mensais, utilizamos
+#    tamb√©m o quesito V9011 (n√∫mero de meses).
+#    Os valores s√£o anualizados para depois se obter uma m√©dia mensal.
 
 # b) Para expandir, utilizamos o quesito "peso_final".
 
-# c) Posteriormente, o resultado È dividido por 12 para obter a estimativa mensal. 
+# c) Posteriormente, o resultado √© dividido por 12 para obter a estimativa mensal. 
 
 
 desp_coletiva_p <- 
@@ -82,19 +82,19 @@ rm(despesa_coletiva_p)
 
 
 
-#  Leitura do REGISTRO - CADERNETA COLETIVA (Question·rio POF 3)
+#  Leitura do REGISTRO - CADERNETA COLETIVA (Question√°rio POF 3)
 
 caderneta_coletiva_p <- readRDS("CADERNETA_COLETIVA.rds")
 
-# AnualizaÁ„o e expans„o dos valores utilizados para a obtenÁ„o dos resultados 
-# (vari·vel V8000_defla). 
+# Anualiza√ß√£o e expans√£o dos valores utilizados para a obten√ß√£o dos resultados 
+# (vari√°vel V8000_defla). 
 
-# a) Para anualizar, utilizamos o quesito "fator_anualizacao". Os valores s„o
-#    anualizados para depois se obter uma mÈdia mensal.
+# a) Para anualizar, utilizamos o quesito "fator_anualizacao". Os valores s√£o
+#    anualizados para depois se obter uma m√©dia mensal.
 
 # b) Para expandir, utilizamos o quesito "peso_final".
 
-# c) Posteriormente, o resultado È dividido por 12 para obter a estimativa mensal.
+# c) Posteriormente, o resultado √© dividido por 12 para obter a estimativa mensal.
 
 cad_coletiva_p <- 
   transform( caderneta_coletiva_p,
@@ -109,17 +109,17 @@ rm(caderneta_coletiva_p)
 
 despesa_individual_p <- readRDS("DESPESA_INDIVIDUAL.rds")
 
-#   AnualizaÁ„o e expans„o dos valores utilizados para a obtenÁ„o dos resultados 
-#   (vari·vel V8000_defla). 
+#   Anualiza√ß√£o e expans√£o dos valores utilizados para a obten√ß√£o dos resultados 
+#   (vari√°vel V8000_defla). 
 
-# a) Para anualizar, utilizamos o quesito "fator_anualizacao". No caso especÌfico 
-#    dos quadros 44, 47, 48, 49 e 50, cujas informaÁıes se referem a valores mensais, 
-#    utilizamos tambÈm o quesito V9011 (n˙mero de meses).
-#    Os valores s„o anualizados para depois se obter uma mÈdia mensal.
+# a) Para anualizar, utilizamos o quesito "fator_anualizacao". No caso espec√≠fico 
+#    dos quadros 44, 47, 48, 49 e 50, cujas informa√ß√µes se referem a valores mensais, 
+#    utilizamos tamb√©m o quesito V9011 (n√∫mero de meses).
+#    Os valores s√£o anualizados para depois se obter uma m√©dia mensal.
 
 # b) Para expandir, utilizamos o quesito "peso_final".
 
-# c) Posteriormente, o resultado È dividido por 12 para obter a estimativa mensal.
+# c) Posteriormente, o resultado √© dividido por 12 para obter a estimativa mensal.
 
 desp_individual_p <-
   transform( despesa_individual_p,
@@ -138,19 +138,19 @@ rm(despesa_individual_p)
 
 rendimento_trabalho_p <- readRDS("RENDIMENTO_TRABALHO.rds")
 
-#   AnualizaÁ„o e expans„o dos valores de deduÁıes com "PrevidÍncia P˙blica",
-#   "Imposto de Renda" e "Iss e Outros Impostos" utilizados para a obtenÁ„o 
-#   dos resultados (vari·veis V531112_defla, V531122_defla e V531132_defla).
-#   Estes quesitos s„o utilizados no grupo "Outras despesas correntes". 
+#   Anualiza√ß√£o e expans√£o dos valores de dedu√ß√µes com "Previd√™ncia P√∫blica",
+#   "Imposto de Renda" e "Iss e Outros Impostos" utilizados para a obten√ß√£o 
+#   dos resultados (vari√°veis V531112_defla, V531122_defla e V531132_defla).
+#   Estes quesitos s√£o utilizados no grupo "Outras despesas correntes". 
 
-# a) Para anualizar, utilizamos o quesito "fator_anualizacao". No caso especÌfico
-#    deste registro, cujas informaÁıes se referem a valores mensais, utilizamos
-#    tambÈm o quesito V9011 (n˙mero de meses).
-#    Os valores s„o anualizados para depois se obter uma mÈdia mensal.
+# a) Para anualizar, utilizamos o quesito "fator_anualizacao". No caso espec√≠fico
+#    deste registro, cujas informa√ß√µes se referem a valores mensais, utilizamos
+#    tamb√©m o quesito V9011 (n√∫mero de meses).
+#    Os valores s√£o anualizados para depois se obter uma m√©dia mensal.
 
 # b) Para expandir, utilizamos o quesito "peso_final".
 
-# c) Posteriormente, o resultado È dividido por 12 para obter a estimativa mensal.
+# c) Posteriormente, o resultado √© dividido por 12 para obter a estimativa mensal.
 
 rend_trabalho_p <-
   transform( rendimento_trabalho_p,
@@ -169,18 +169,18 @@ rm(rendimento_trabalho_p)
 outros_rendimentos_p <- readRDS("OUTROS_RENDIMENTOS.rds")
 
 
-#   AnualizaÁ„o e expans„o dos valores de deduÁıes utilizados para a obtenÁ„o
-#   dos resultados (vari·vel V8501_defla).Este quesito È utilizado no grupo
+#   Anualiza√ß√£o e expans√£o dos valores de dedu√ß√µes utilizados para a obten√ß√£o
+#   dos resultados (vari√°vel V8501_defla).Este quesito √© utilizado no grupo
 #   "Outras despesas correntes".
 
-# a) Para anualizar, utilizamos o quesito "fator_anualizacao". No caso especÌfico 
-#    do quadro 54, cujas informaÁıes se referem a valores mensais, utilizamos tambÈm
-#    o quesito V9011 (n˙mero de meses).
-#    Os valores s„o anualizados para depois se obter uma mÈdia mensal.
+# a) Para anualizar, utilizamos o quesito "fator_anualizacao". No caso espec√≠fico 
+#    do quadro 54, cujas informa√ß√µes se referem a valores mensais, utilizamos tamb√©m
+#    o quesito V9011 (n√∫mero de meses).
+#    Os valores s√£o anualizados para depois se obter uma m√©dia mensal.
 
 # b) Para expandir, utilizamos o quesito "peso_final".
 
-# c) Posteriormente, o resultado È dividido por 12 para obter a estimativa mensal. 
+# c) Posteriormente, o resultado √© dividido por 12 para obter a estimativa mensal. 
 
 outros_rend_p <-
   transform( outros_rendimentos_p,
@@ -196,15 +196,15 @@ rm(outros_rendimentos_p)
 
 
 
-# [1] JunÁ„o dos registros, que englobam os itens componentes da tabela de despesa geral. 
+# [1] Jun√ß√£o dos registros, que englobam os itens componentes da tabela de despesa geral. 
 
-# [2] TransformaÁ„o do cÛdigo do item (vari·vel V9001) em 5 n˙meros, para ficar no mesmo
-#     padr„o dos cÛdigos que constam nos arquivos de tradutores das tabelas. Esses cÛdigos
-#     s„o simplificados em 5 n˙meros, pois os 2 ˙ltimos n˙meros caracterizam sinÙnimos
-#     ou termos regionais do produto. Todos os resultados da pesquisa s„o trabalhados 
-#     com os cÛdigos considerando os 5 primeiros n˙meros. Por exemplo, tangerina e mexirica
-#     tem cÛdigos diferentes quando se considera 7 n˙meros, porÈm o mesmo cÛdigo quando
-#     se considera os 5 primeiros n˙meros.
+# [2] Transforma√ß√£o do c√≥digo do item (vari√°vel V9001) em 5 n√∫meros, para ficar no mesmo
+#     padr√£o dos c√≥digos que constam nos arquivos de tradutores das tabelas. Esses c√≥digos
+#     s√£o simplificados em 5 n√∫meros, pois os 2 √∫ltimos n√∫meros caracterizam sin√¥nimos
+#     ou termos regionais do produto. Todos os resultados da pesquisa s√£o trabalhados 
+#     com os c√≥digos considerando os 5 primeiros n√∫meros. Por exemplo, tangerina e mexirica
+#     tem c√≥digos diferentes quando se considera 7 n√∫meros, por√©m o mesmo c√≥digo quando
+#     se considera os 5 primeiros n√∫meros.
 
 desp_coletiva_n_p <- cbind( desp_coletiva_p , NA , NA , NA , NA )
 names(desp_coletiva_n_p) <- c( names( desp_coletiva_p) , 
@@ -263,8 +263,8 @@ junta_p <-
              codigo = round(V9001/100) 
   )[ , -2 ]
 
-# Leitura do REGISTRO - MORADOR, necess·rio para o c·lculo do n˙mero de UC's expandido.
-# Vale ressaltar que este È o ˙nico registro dos microdados que engloba todas as UC's
+# Leitura do REGISTRO - MORADOR, necess√°rio para o c√°lculo do n√∫mero de UC's expandido.
+# Vale ressaltar que este √© o √∫nico registro dos microdados que engloba todas as UC's
 
 # Extraindo todas as UC's do arquivo de morador
 
@@ -275,35 +275,35 @@ morador_uc_p <-
     ) [ ,
         c( "UF","ESTRATO_POF","TIPO_SITUACAO_REG","COD_UPA","NUM_DOM","NUM_UC",
            "PESO_FINAL"
-        ) # Apenas vari·veis com informaÁıes das UC's no arquivo "MORADOR.rds"
+        ) # Apenas vari√°veis com informa√ß√µes das UC's no arquivo "MORADOR.rds"
         ] ) # Apenas um registro por UC
 
-# Calculando o n˙mero de UC's expandido 
-# A cada domicÌlio È associado um peso_final e este È tambÈm associado a cada uma de suas unidades de consumo 
-# Portanto, o total de unidades de consumo (familias) expandido, È o resultado da soma dos pesos_finais a elas associados
+# Calculando o n√∫mero de UC's expandido 
+# A cada domic√≠lio √© associado um peso_final e este √© tamb√©m associado a cada uma de suas unidades de consumo 
+# Portanto, o total de unidades de consumo (familias) expandido, √© o resultado da soma dos pesos_finais a elas associados
 
 soma_familia_p <- sum( morador_uc_p$PESO_FINAL )
 
 # Leitura do arquivo de tradutor da tabela de despesa geral. 
-# Este tradutor organiza os cÛdigos de produtos pelos diferetes
+# Este tradutor organiza os c√≥digos de produtos pelos diferetes
 # grupos da tabela de despesa geral.
 
-# Descomente e execute o comando seguinte apenas se o pacote "readxl" n„o estiver ainda instalado:
+# Descomente e execute o comando seguinte apenas se o pacote "readxl" n√£o estiver ainda instalado:
 # install.packages("readxl")
 
-# "....." indica a pasta/diretÛrio de trabalho no HD local separados por "/"
+# "....." indica a pasta/diret√≥rio de trabalho no HD local separados por "/"
 # onde se encontram os arquivos .xls dos tradutores das tabelas
 # Exemplo: setwd("c:/POF2018/Tradutores_20200403")
 
-setwd(". . .") # ..... È o caminho para a pasta "Tradutores_20200403"
+setwd(". . .") # ..... √© o caminho para a pasta "Tradutores_20200403"
 
 tradutor_despesa_p <-
   readxl::read_excel("Tradutor_Despesa_Geral.xls") 
 
 
-# Juntando a base de dados com o tradutor da tabela de despesa geral por cÛdigo.
+# Juntando a base de dados com o tradutor da tabela de despesa geral por c√≥digo.
 
-# Descomenta e execute o comando seguinte apenas se o pacote "sqldf" n„o estiver ainda instalado:
+# Descomenta e execute o comando seguinte apenas se o pacote "sqldf" n√£o estiver ainda instalado:
 # install.packages("sqldf")
 
 junta_tradutor_p <-
@@ -322,11 +322,11 @@ junta_tradutor_p <-
 
 
 
-# CriaÁ„o da vari·vel resultante "valor" que receber· os valores das vari·veis de acordo
-# com o grupo de despesa ao qual o cÛdigo esteja associado. A maioria dos grupos da tabela
-# utiliza o quesito V8000_DEFLA, referente a valores de despesas/aquisiÁıes dos produtos 
-# e serviÁos. J· o grupo "Outras despesas correntes", alÈm do quesito V8000_DEFLA, tambÈm
-# utiliza os quesitos INSS (V1904_DEFLA)e deduÁıes (V531112_DEFLA, V531122_DEFLA, 
+# Cria√ß√£o da vari√°vel resultante "valor" que receber√° os valores das vari√°veis de acordo
+# com o grupo de despesa ao qual o c√≥digo esteja associado. A maioria dos grupos da tabela
+# utiliza o quesito V8000_DEFLA, referente a valores de despesas/aquisi√ß√µes dos produtos 
+# e servi√ßos. J√° o grupo "Outras despesas correntes", al√©m do quesito V8000_DEFLA, tamb√©m
+# utiliza os quesitos INSS (V1904_DEFLA)e dedu√ß√µes (V531112_DEFLA, V531122_DEFLA, 
 #                                                   V531132_DEFLA ou V8501_DEFLA)
 
 merge1_p <- 
@@ -354,9 +354,9 @@ merge1_p <-
 merge1_p <- merge1_p[!is.na(merge1_p$valor), ]
 rm( junta_p, junta_tradutor_p , tradutor_despesa_p)
 
-# AtÈ aqui utilizei o algoritmo original com alteraÁıes. O resultado final, daqui em diante
-# ser· diferente. Pois meu objetivo n„o È gerar uma tabela da despesa mÈdia nacional por categoria
-# mas ter a lista de despesas para gerar outros nÌveis de agregaÁ„o geogr·fica.
+# At√© aqui utilizei o algoritmo original com altera√ß√µes. O resultado final, daqui em diante
+# ser√° diferente. Pois meu objetivo n√£o √© gerar uma tabela da despesa m√©dia nacional por categoria
+# mas ter a lista de despesas para gerar outros n√≠veis de agrega√ß√£o geogr√°fica.
 
 # Separando a coluna id nas colunas UF, ESTRATO_POF, TIPO_SITUACAO_REG, COD_UPA, NUM_DOM, NUM_UC
 
@@ -365,7 +365,7 @@ POF_despesas <- merge1_p %>%
 
 
 # Atribuindo as caracteristicas da UC de referencia.
-# 1) Primeiro selecionando as vari·veis de interesse da tabela MORADOR.
+# 1) Primeiro selecionando as vari√°veis de interesse da tabela MORADOR.
 
 setwd(". . .")
 MORADOR <- readRDS("MORADOR.rds")
@@ -396,14 +396,14 @@ POF_despesas <- left_join(POF_despesas,
 
 rm(merge1_p, MORADOR, morador_uc_ref)
 
-# Removendo as colunas que n„o ser„o usadas
+# Removendo as colunas que n√£o ser√£o usadas
 POF_despesas <- POF_despesas %>%
   select(!(valor_mensal:Variavel)) 
 
 
 # Unindo com o Tradutor de Estratos Urbanos
 
-# Antes de realizar essa etapa, È necess·rio executar o script "Gerar Tradutor de Estratos.R"
+# Antes de realizar essa etapa, √© necess√°rio executar o script "Gerar Tradutor de Estratos.R"
 
 setwd(". . .")
 tradutor_estratos <- readRDS("Tradutor Estratos.RDS")
