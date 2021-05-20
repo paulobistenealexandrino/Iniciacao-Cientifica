@@ -35,7 +35,7 @@ Além disso, eu precisava ter o local dessas despesas (UF, URBANO/RURAL, CAPITAL
 
 Esse procedimento gerará o arquivo Tradutor Estratos.RDS que será usado no algoritmo [Gerar Meu DataSet.R](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/e64d39ff049b5dc9c5b1b0ad2a5ebd3768d73a84/Gerar%20Meu%20DataSet.R).
 
-"Gerar Meu DataSet.R" é o arquivo principal dessa parte. Ao executá-lo será gerada uma lista de despesas categorizadas e já com os devidos códigos e dos estratos. A partir daí podemos iniciar nosso processo de limpeza e organização dos dados.
+"Gerar Meu DataSet.R" é o arquivo principal dessa parte. Ao executá-lo será gerada uma lista de despesas categorizadas e já com os devidos códigos e dos estratos. Será gerado o arquivo "POF_despesas.rds" e a partir dele podemos iniciaremos nosso processo de limpeza e organização dos dados.
 
 # Limpeza dos Dados
 
@@ -43,7 +43,15 @@ Nessa etapa eu realizei um exercício de organização dos dados, corrigindo cla
 
 1. Baixe o arquivo [Indice_Despesa.csv](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/c6ab5db375255ebffff4b80bd5d69da33d69385e/Indice_Despesa.csv)
 2. Baixe o arquivo [Minhas Variáveis.csv](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/38cef9ed29609df7eac6ec9a2c2bf2c88fe4dc4d/Minhas%20Vari%C3%A1veis.csv)
-3. 
+3. Baixe e execute o arquivo [Data Cleaning POF.r](https://github.com/paulobistenealexandrino/ic_pof/blob/31457fb197b4704bc911934ec61e19343719200d/Data%20Cleaning%20POF.R)
+
+Após executar esses passos teremos o arquivo POF.rds pronto para ser analisado!
+
+# Exploração dos Dados
+
+Se você leu todos os arquivos que sugeri e compreendeu os algoritmos deve ter percebido que cada família na POF tem um peso. Para podermos gerar as despesas médias para os níveis geográficos de interesses, devemos atentar para o fato de que sempre precisaremos dividir a soma das despesas que estamos interessados pelo peso das famílias a que essas despesas estão associadas. (IMPORTANTE! Essa não é uma definição precisa do que é feito, estou escrevendo de forma a tornar prático os procedimentos. Sempre que possível procure fontes do IBGE para definições precisas de "peso", "família", "domicílio", "nível de agregação" e outros conceitos importantes. Mais uma vez destaco que o "Primeiros Resultados" é uma fonte importante de consulta".
+
+O 
 
 
 
