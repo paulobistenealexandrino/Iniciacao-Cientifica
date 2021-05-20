@@ -10,9 +10,11 @@ Página oficial da pesquisa onde pode ser encontrado informações sobre seu his
 
 Uma boa leitura para entender a estrutura da pesquisa é ler o documento [Primeiros Resultados](https://biblioteca.ibge.gov.br/visualizacao/livros/liv101670.pdf) do IBGE. Ele apresenta a pesquisa, sua estrutura, os conceitos importantes e realiza uma análise descritiva inicial dos dados. 
 
+# Aquisição dos Dados
+
 ## [Microdados](https://www.ibge.gov.br/estatisticas/sociais/educacao/9050-pesquisa-de-orcamentos-familiares.html?=&t=microdados)
 
-O IBGE fornece juntamente com os microdados uma série de arquivos de suporte e documentação. Eles estão organizados em seis pastas: Dados, Documentação, Questionários, Tradutores das Tabelas, Programas de Leitura e Memória de Cálculo. O arquivo [Leia-me](https://ftp.ibge.gov.br/Orcamentos_Familiares/Pesquisa_de_Orcamentos_Familiares_2017_2018/Microdados/Leiame_Microdados_POF2017_2018_20210304.pdf) contém a descrição dessas pastas.
+O IBGE fornece juntamente com os microdados uma série de arquivos de suporte e documentação. Eles estão organizados em seis pastas: Dados, Documentação, Questionários, Tradutores das Tabelas, Programas de Leitura e Memória de Cálculo. O arquivo [Leia-me](https://ftp.ibge.gov.br/Orcamentos_Familiares/Pesquisa_de_Orcamentos_Familiares_2017_2018/Microdados/Leiame_Microdados_POF2017_2018_20210304.pdf) contém a descrição dessas pastas. Um dos arquivos mais importantes é o Dicionário de Variáveis que pode ser encontrado na pasta "Documentação", ou [aqui](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/c8e7c98b42e0a9bbeb10f9b4cacef6cc4cc30c0d/Dicion%C3%A1rios%20de%20v%C3%A1riaveis.xls).
 
 ## Progamas de Leituras
 
@@ -24,7 +26,16 @@ Nessa pasta, dentro pasta R, encontram-se scripts que permitem gerar alguns resu
 
 ## Gerar Meu Dataset
 
-Para o propósito da minha pesquisa, precisei realizar algumas alterações nesse script, para fazer as agregações que eram convenientes para mim. Esse arquivo é o [Gerar Meu DataSet.R](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/a9c6ce62f2cd61f238b458aa7442765fc497cc88/Gerar%20Meu%20DataSet.R)
+Para o propósito da minha pesquisa, precisei realizar algumas alterações nesse script "Tabela de Despesa Geral.R", para fazer as agregações que eram convenientes para mim. Esse arquivo é o [Gerar Meu DataSet.R](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/fd7db1fdd90c6105817091a814c08460a9197b30/Gerar%20Meu%20DataSet.R). Meu objetivo era ver a despesa média com transporte para as diferentes regiões metropolitanas. Para tanto, era preciso construir uma lista de todas as despesas categorizadas. A documentação anteriormente mencionada apresenta essas categorias, em especial o documento "Primeiros Resultados". 
+
+Além disso, eu precisava ter o local dessas despesas (UF, URBANO/RURAL, CAPITAL/RESTO DA RM). Essa informação pode ser obtida pela variável "ESTRATO_POF". Contudo, o arquivo que traduz os estratos, não está em um formato adequado para uma operação de join ("Estratos POF 2017-2018.xls", presente na pasta "Documentação", ou [aqui](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/762643dd7b12d55294905397a84734048c77c3f5/Estratos%20POF%202017-2018.xls)). Editei manualmente este arquivo (a versão modificada pode ser encontrada [aqui](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/2ac6b99f2f4f06f0cd832b034b1b4fc6d1bc133f/Tradutor_Estratos.csv), de forma a utilizá-lo para gerar uma lista de estratos utilizando um algoritmo R. Assim, de forma a incorporar os estratos corretamente, você deve:
+
+1. Baixar o arquivo [Tradutor_Estratos.csv](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/2ac6b99f2f4f06f0cd832b034b1b4fc6d1bc133f/Tradutor_Estratos.csv)
+2. Baixar e executar o algoritmo [Gerar Tradutor de Estratos.R](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/e64d39ff049b5dc9c5b1b0ad2a5ebd3768d73a84/Gerar%20Tradutor%20de%20Estratos.R)
+
+Esse procedimento gerará o arquivo Tradutor Estratos.RDS que será usado no algoritmo [Gerar Meu DataSet.R](https://github.com/paulobistenealexandrino/pesquisa-ic-pof/blob/e64d39ff049b5dc9c5b1b0ad2a5ebd3768d73a84/Gerar%20Meu%20DataSet.R).
+
+"Gerar Meu DataSet.R" é o arquivo principal dessa parte. Ao executá-lo será gerada uma lista de despesas categorizadas e já com os devidos códigos e dos estratos. A partir daí podemos iniciar nosso processo de limpeza e organização dos dados.
 
 
 
