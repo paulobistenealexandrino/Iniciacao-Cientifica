@@ -1,0 +1,25 @@
+variavel_original;descricao;correct_class
+UF;Unidade da Federação;factor
+ESTRATO_POF;Estrato do plano amostral;character
+TIPO_SITUACAO_REG;Situação do Domicílio;factor
+COD_UPA;Código da Unidade Primária de Amostragem;character
+NUM_DOM;Número do Domicílio;character
+NUM_UC;Número da unidade de consumo;character
+Nivel_0;Índice de Classificação da Despesas Nivel 0;factor
+Nivel_1;Índice de Classificação da Despesas Nivel 1;factor
+Nivel_2;Índice de Classificação da Despesas Nivel 2;factor
+Nivel_3;Índice de Classificação da Despesas Nivel 3;factor
+Nivel_4;Índice de Classificação da Despesas Nivel 4;factor
+Nivel_5;Índice de Classificação da Despesas Nivel 5;factor
+valor;Valor da despesa anualizada, expandida e feita estimativa mensal. Recebeu os valores das variáveis de acordo com o grupo de despesa ao qual seu código estava associado.;numeric
+V0403;Idade do morador de referência;integer
+V0404;Sexo do morador de referência;factor
+V0405;Cor ou raça do morador de referência;factor
+V0425;Curso mais elevado frequentado anteriormente pelo morador de referência;factor
+ANOS_ESTUDO;Número de anos de estudo do morador de referência;integer
+PESO;Fator de expansão atribuído ao domicílio pertencente a uma UPA;numeric
+PESO_FINAL;Fator de expansão (peso) ajustado às estimativas populacionais;numeric
+RENDA_TOTAL;Valor em reais, considerando os centavos, do rendimento bruto mensal da Unidade de Consumo;numeric
+REGIAO;Região a que pertence a Unidade da Federação;factor
+UF_SIGLA;Sigla da Unidade da Federação;factor
+LOCAL;Classificação do Local a que está associado o código do Estrato da POF;factor
