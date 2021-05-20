@@ -33,7 +33,7 @@ tab3 <- trad_estrat %>%
   complete(ESTRATO_POF = seq(ESTRATO_POF[1],ESTRATO_POF[2])) %>%
   fill(REGIAO, UF_SIGLA, LOCAL, POSICAO, .direction = "up")  
 
-# Preenchendo para DF_URBANO (DF urbano n„o È dividido em CAPITAL, RESTO_RM e RESTO_UF)
+# Preenchendo para DF_URBANO (DF urbano n√£o √© dividido em CAPITAL, RESTO_RM e RESTO_UF)
 tab4 <- trad_estrat %>%
   gather(key = "POSICAO", value = "ESTRATO_POF", INICIO:FINAL) %>%
   filter(LOCAL == "DF_URBANO" & !is.na(ESTRATO_POF)) %>%
@@ -61,10 +61,10 @@ tradutor_estratos <- unique(merge1) %>%
   ungroup(NOME) %>%
   select(-NOME)
 
-# Para remover as vari·veis que n„o ser„o mais usadas, basta descomentar
+# Para remover as vari√°veis que n√£o ser√£o mais usadas, basta descomentar
 rm(trad_estrat, tab1, tab2, tab3, tab4, tab5, merge1)
 
-# Salvando a vers„o final
+# Salvando a vers√£o final
 write.csv(tradutor_estratos, file = "Tradutor_Estratos_FINAL.csv")
 saveRDS(tradutor_estratos, file = "Tradutor Estratos.RDS")  
   
