@@ -51,7 +51,9 @@ Após executar esses passos teremos o arquivo POF.rds pronto para ser analisado!
 
 Se você leu todos os arquivos que sugeri e compreendeu os algoritmos deve ter percebido que cada família na POF tem um peso. Para podermos gerar as despesas médias para os níveis geográficos de interesses, devemos atentar para o fato de que sempre precisaremos dividir a soma das despesas que estamos interessados pelo peso das famílias a que essas despesas estão associadas. (IMPORTANTE! Essa não é uma definição precisa do que é feito, estou escrevendo de forma a tornar prático os procedimentos. Sempre que possível procure fontes do IBGE para definições precisas de "peso", "família", "domicílio", "nível de agregação" e outros conceitos importantes. Mais uma vez destaco que o "Primeiros Resultados" é uma fonte importante de consulta".
 
-O 
+O arquivo [Data Exploring POF.R](https://github.com/paulobistenealexandrino/Iniciacao-Cientifica/blob/7d5b66ea979f40f9daa8fa2ed039e8b3c5202c03/Data%20Exploring%20POF.R) contém alguns exemplos de cálculos de médias que podem ser úteis para entender a lógica utilizada. 
+
+# Considerações Finais
 
 
 
