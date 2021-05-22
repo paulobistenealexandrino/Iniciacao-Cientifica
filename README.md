@@ -53,7 +53,6 @@ Se você leu todos os arquivos que sugeri e compreendeu os algoritmos deve ter p
 
 O arquivo [Data Exploring POF.R](https://github.com/paulobistenealexandrino/Iniciacao-Cientifica/blob/7d5b66ea979f40f9daa8fa2ed039e8b3c5202c03/Data%20Exploring%20POF.R) contém alguns exemplos de cálculos de médias que podem ser úteis para entender a lógica utilizada. 
 
-# Considerações Finais
 
 
 
